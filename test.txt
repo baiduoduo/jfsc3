@@ -1,0 +1,81 @@
+var data = {
+	type:{
+		"1":"最热",
+		"2":"QB",
+		"3":"YB"
+
+	},
+	award:[
+		{
+			name:"当月话费+15分钟",
+			id:1,
+			typeId:1,
+			desc:"xxxx",
+			price:"100"
+		},
+		{
+			name:"QB",
+			id:2,
+			typeId:2,
+			desc:"xxxx",
+			price:"100"
+		},
+		{
+			name:"YB",
+			id:3,
+			typeId:3,
+			desc:"xxxx",
+			price:"100"
+		}
+	]
+}
+
+
+var data = {
+	award:[
+		{
+			name:"当月话费+15分钟",
+			id:1,
+			typeId:"最热",
+			desc:"xxxx",
+			price:"100"
+		},
+		{
+			name:"QB",
+			id:2,
+			typeId:"QB",
+			desc:"xxxx",
+			price:"100"
+		},
+		{
+			name:"YB",
+			id:3,
+			typeId:"YB",
+			desc:"xxxx",
+			price:"100"
+		},
+		{
+			name:"YB",
+			id:4,
+			typeId:"YB",
+			desc:"xxxx",
+			price:"100"
+		},
+		{
+			name:"YB",
+			id:5,
+			typeId:"QB",
+			desc:"xxxx",
+			price:"100"
+		}
+	]
+}
+
+
+if(typeId == 1){
+	//话费 2卡码
+}else if(typeId == 2){
+	//QB 1个卡码
+}
+
+artTemplate

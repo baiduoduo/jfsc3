@@ -1,0 +1,83 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+em,strong,i{
+	font-style: normal;
+}
+ul,li{
+	list-style: none;
+}
+html,body{
+	height: 100%;
+	/*阻止浏览器横向滚动条*/
+	overflow-x: hidden;
+}
+body{
+	font-family: "微软雅黑";
+	background: #F8F8F8;
+}
+input,textarea,select{
+	outline: 0;
+}
+a{
+	text-decoration: none;
+	cursor: default;
+}
+.clear{
+	clear: both;
+}
+.header {
+    height:1.33333333rem/* 96px */;
+    line-height: 1.33333333rem/* 96px */;
+    background: #03213D;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.header h3 {
+    font-size: .5rem/* 36px */;
+    color: #fff;
+}
+.back{
+	width: .34722222rem/* 25px */;
+	height: .63888889rem/* 46px */;
+	position: absolute;
+	left: 0.444rem;
+	top: 0.37rem;
+}
+.bm{
+	border-bottom: 1px solid #E6E6E6;
+	margin-bottom: .27777778rem/* 20px */;
+	background: #fff;
+}
+.btn{
+	width: 1.88888889rem/* 136px */;
+	height:.83333333rem/* 60px */;
+	text-align: center;
+	line-height: .83333333rem/* 60px */;
+	font-size: .38888889rem/* 28px */;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-o-border-radius:5px;
+}
+.btn_copy{
+	display: inline-block;
+	border: 1px solid #2399F4;
+	color: #2399f4 !important;
+	margin-top: .27777778rem/* 20px */;
+}
+.btn_copy:hover{
+	color: #fff !important;
+	background: #1071d5;
+}
+/*三级联动样式覆盖*/
+.area_btn{
+	font-size: .38888889rem/* 28px */ !important;
+}
+
+.area_roll>div {
+	font-size: .38888889rem/* 28px */ !important;
+}

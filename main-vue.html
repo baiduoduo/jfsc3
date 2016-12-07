@@ -1,0 +1,295 @@
+<!doctype>
+<html>
+
+<head>
+    <title>积分商城-</title>
+    <meta charset="utf-8">
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/main-vue.css">
+</head>
+
+<body>
+    <div class="main">
+        <!-- page1:首页 -->
+        <div id="page1" v-show="currentView==='a'">
+            <div class="header">
+                <img src="img/back.png" class="back">
+                <h3>积分商城</h3>
+            </div>
+            <!-- 导航栏 -->
+            <ul id="nav" class="nav">
+                <li v-bind:class="[isActive==item.id ? 'on' : '']" v-for="(item,index) in type" v-bind:data-id="item.id" v-on:click="render(item.id)">
+                    {{item.name}}
+                </li>
+            </ul>
+            <div class="inner">
+                <ul class="list">
+                    <list-item v-for="(item,index) in list" v-bind:img="item.imgsrc" v-bind:title="item.title" v-bind:price="item.price" v-bind:desc="item.desc"></list-item>
+                </ul>
+            </div>
+        </div>
+        <!-- page1:首页 end -->
+        <!-- page2:详情页  -->
+        <div id="page2" v-show="currentView === 'b'">
+            <div class="header">
+                <img src="img/back.png" class="back">
+                <h3>详情</h3>
+            </div>
+            <!-- 二、虚拟奖励积分详情 -->
+            <div class="detail virtual_detail">
+                <div class="award bm">
+                    <img id="award_pic" src="./img/detail2_tell.png">
+                    <div class="desc">
+                        <h3 id="desc_tit">当月话费+15分钟</h3>
+                        <em id="desc_price">100积分</em>
+                        <p>
+                            <i class="bar">
+                                <em class="bar_on"></em>
+                            </i>
+                            <span id="score">624</span>/1000
+                        </p>
+                    </div>
+                    <div class="btn btn_convert">
+                        兑换
+                    </div>
+                </div>
+                <!-- mod2 图片滚动 -->
+                <div id="pic_scroll" class="page_guide_slider">
+                    <div class="wrap_pic page_guide_container" onMouseDown="pageGuideMousedown(this,event)" onMouseMove="pageGuideMousemove(this,event)" onMouseUp="pageGuideMouseup(this,event)" onMouseOut="pageGuideMouseout(this,event)" ontouchstart="pageGuideTouchstart(this,event)" ontouchmove="pageGuideTouchmove(this,event)" ontouchend="pageGuideTouchend(this,event)">
+                        <ul class="carrous page_guide_items" id="carrous">
+                            <carrous-li
+                               v-for="item in list"
+                               v-bind:img="item.img"
+                            ></carrous-li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- mod3 兑换详情 -->
+                <div class="wrap_desc">
+                    <!-- 我的卡码 -->
+                    <div id="kama" class="kama bm">
+                        <h3 class="tit">我的卡码</h3>
+                        <div class="content">
+                            <p class="bor_b">
+                                <span class="kama_value">wewejklsdjflsdfjksdjfksdf</span>
+                                <span class="btn btn_copy">复制</span>
+                            </p>
+                            <p>
+                                <span class="kama_value">wewejklsdjflsdfjksdjfksdf</span>
+                                <span class="btn btn_copy">复制</span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 兑换期限 -->
+                    <div class="cvt_date bm">
+                        <h3 class="tit">兑换期限</h3>
+                        <p>2015.04.09 <span>00:00:00</span>-2016.05.12 <span>23:56:59</span></p>
+                    </div>
+                    <!-- 奖励详情 -->
+                    <div class="award_desc bm">
+                        <h3 class="tit">奖励详情</h3>
+                        <p>
+                            积分兑换后，您将获得一张话费充值卡，可以增加您当月话费15分钟。
+                        </p>
+                    </div>
+                    <!-- 兑换方法-->
+                    <div class="cvt_method bm">
+                        <h3 class="tit">兑换方法</h3>
+                        <div class="content">
+                            <strong></strong>
+                            <p>
+                                <i class="step step1">1</i>
+                                <span>点击游戏右上加号</span>
+                            </p>
+                            <p>
+                                <i class="step step2">2</i>
+                                <span>点击兑换礼包，输入激活码</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page2:详情页  end-->
+        <!-- page3:订单交易成功 -->
+        <div id="page3">
+            <div class="header">
+                <img src="img/back.png" class="back">
+                <h3>订单详情</h3>
+            </div>
+            <div class="mod book_mod1">
+                <div class="award bm">
+                    <img src="./img/detail_award1.png">
+                    <div class="desc">
+                        <h3>雷蛇鼠标</h3>
+                        <em>20000积分</em>
+                        <p class="intro">高逼格，就是这么叼</p>
+                    </div>
+                </div>
+                <div class="item item1 bm">
+                    <div class="trade">
+                        <img src="img/success.png" class="res_pic">
+                        <span class="on">交易成功！</span>
+                    </div>
+                    <div>
+                        <span>订单金额：</span>
+                        <i>15666积分</i>
+                    </div>
+                    <div>
+                        <span>交易时间：</span>
+                        <i>2016.16 8:41:23</i>
+                    </div>
+                    <div class="pay">
+                        <span>充值账号：</span>
+                        <i>15874266</i>
+                    </div>
+                </div>
+                <div class="item item2 bm">
+                    <div>
+                        <span>收货人：</span>
+                        <span>张三丰</span>
+                    </div>
+                    <div>
+                        <span>联系电话：</span>
+                        <i>153-9595-1212</i>
+                    </div>
+                    <div>
+                        <span>收货地址：</span>
+                        <i>阿里山的减肥阿萨大开发</i>
+                    </div>
+                </div>
+                <div class="item item3 bm">
+                    <div>
+                        <span>订单状态：</span>
+                        <i class="on">已发货</i>
+                    </div>
+                    <div>
+                        <span>快递单号：</span>
+                        <i>顺丰快递 912 2525 2466 56565</i>
+                    </div>
+                    <div>
+                        <span class="btn_infor">查看物流信息</span>
+                    </div>
+                </div>
+                <div class="item4">
+                    <a id="kf" href="">
+                        <p class="kf">联系客服</p>
+                    </a>
+                    <a id="address" href="">
+                        <p class="address">修改收货地址</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- page3:订单交易成功end -->
+    </div>
+    <!-- <div v-show="currentView === 'b'">
+        
+
+    </div> -->
+    <script type="text/javascript" src="./js/data.js"></script>
+    <script type="text/javascript" src="./js/lib/vue.min.js"></script>
+    <script type="text/javascript" src="./js/lib/slider.js"></script>
+    <script type="text/javascript">
+    var globalData = {
+        type: 1
+    };
+    var currentView = "a";
+    var info = {};
+    // 导航栏
+    var nav = new Vue({
+            el: "#nav",
+            data: {
+                globalData: globalData,
+                type: data.type
+            },
+            computed: {
+                isActive: function() {
+                    return globalData.type;
+                }
+            },
+            methods: {
+                render: function(type) {
+                    globalData.type = type;
+                }
+            }
+        })
+    //奖品 内容列表
+    Vue.component('list-item', {
+        template: '<li v-on:click="turnPage2()">\
+                        <img class="hot_gifts" :src=res>\
+                        <div class="desc">\
+                            <h3>{{title}}</h3>\
+                            <p>￥{{price}}积分</p>\
+                            <span>{{desc}}</span>\
+                        </div>\
+                   </li>',
+        props: ['title', 'img', 'price', 'desc'],
+        computed: {
+            res: function() {
+                return "img/" + this.img + ".png"
+            }
+        },
+        methods:{
+            turnPage2:function(){
+                alert(2)
+                // currentView = 'b';
+            }
+        }
+    })
+    var list = new Vue({
+        el: ".list",
+        data: {
+            globalData: globalData,
+            list: []
+        },
+        watch: {
+            "globalData.type": { //
+                immediate: true, //默认false，数据没变之前不执行下面的hander方法
+                handler: function(val) { //val变化之后的值,(如果有第二个参数的话，则第二个参数表示变化之前的值)
+                    this.list = getList(val);
+                }
+            }
+        }
+    })
+
+    // 获取6个type类型的奖品awards数组
+    function getList(type) {
+        var temp = [];
+        for (var i = 0, t; t = data.awards[i]; i++) {
+            t.typeId == type && temp.push(t);
+        }
+        return temp;
+    }
+
+    // --------page2 详情页-----------
+    // Vue.component('carrous-li', {
+    //     template: '<li class="car_pic page_guide_item">\
+    //                     <img v-bind:src=res>\
+    //                </li>',
+    //     props: ['img'],
+    //     computed: {
+    //         res: function() {
+    //             return "img/" + this.img + ".png"
+    //         }
+    //     }
+    // })
+    // var carrous = new Vue({
+    //     el:"#carrous",
+    //     data:{
+    //         list:rAdata
+    //     }
+    // })
+    // // 切换显示
+    // var page = new Vue({
+    //     el:".main",
+    //     data:{
+    //         currentView:currentView
+    //     }
+    // })
+    </script>
+    <script type="text/javascript" src="./js/lib/slider.js"></script>
+</body>
+
+</html>

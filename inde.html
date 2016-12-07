@@ -1,0 +1,87 @@
+<!doctype>
+<html>
+
+<head>
+    <title>积分商城-</title>
+    <meta charset="utf-8">
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/main-vue.css">
+</head>
+
+<body>
+    <div class="main">
+        <!-- page1:首页 -->
+        <div id="page1">
+            <div class="header">
+                <img src="img/back.png" class="back">
+                <h3>积分商城</h3>
+            </div>
+            <!-- 导航栏 -->
+            <ul id="nav" class="nav">
+                <li v-bind:class="[isActive=='0' ? 'on' : '']" v-for="(item,index) in type" v-bind:data-id="item.id" v-on:click="render()">
+                    {{item.name}}
+                </li>
+                <!-- <nav-li></nav-li> -->
+            </ul>
+            <div class="inner">
+                <ul class="list">
+                    <todo-item v-for="(award,index) in awards"
+                    v-bind:img = "award.imgsrc"
+                    v-bind:title="award.title"
+                    v-bind:price="award.price"
+                    v-bind:desc="award.desc"
+                    ></todo-item>
+                </ul>
+            </div>
+        </div>
+        <!-- page1:首页 end -->
+        <!-- page2:详情页  -->
+        <!-- page2:详情页  end-->
+        <!-- page3:订单交易成功 -->
+        <!-- page3:订单交易成功end -->
+    </div>
+    <script type="text/javascript" src="./js/data.js"></script>
+    <script type="text/javascript" src="./js/lib/vue.min.js"></script>
+    <script type="text/javascript" src="./js/lib/slider.js"></script>
+    <script type="text/javascript">
+    console.log(data)
+    var nav = new Vue({
+            el: "#nav",
+            data: {
+                type:data.type,
+                isActive:false
+            },
+            methods: {
+                render: function() {
+                    isActive:true
+                }
+            }
+        })
+    // 内容列表
+    Vue.component('todo-item', {
+        template: '<li>\
+                        <img class="hot_gifts" :src=res>\
+                        <div class="desc">\
+                            <h3>{{title}}</h3>\
+                            <p>￥{{price}}积分</p>\
+                            <span>{{desc}}</span>\
+                        </div>\
+                   </li>',
+        props: ['title','img','price','desc'],
+        computed:{
+            res:function(){
+                return "img/"+this.img+".png"
+            }
+        }
+    })
+    var list = new Vue({
+        el: ".list",
+        data:{
+            awards:data.awards
+        }
+    })
+    </script>
+</body>
+
+</html>
